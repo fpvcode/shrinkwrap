@@ -45,8 +45,6 @@ At the moment, **ShrinkWrap** uses the following minifiers (but there are plans 
 }
 
 ```
-- Сlone the repo:`git clone https://github.com/fpvcode/shrinkwrap`.
-
 
 ## Usage
 ```
