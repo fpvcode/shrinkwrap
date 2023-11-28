@@ -493,7 +493,7 @@ class ShrinkWrap {
     }
 
     /**
-     * Clears cache.
+     * Clear out of date minified files.
      *
      * @param string (optional) $fname File name to delete from cache
      */
