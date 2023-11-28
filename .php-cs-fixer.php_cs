@@ -42,6 +42,7 @@ return $config
                 'default',
                 'exit',
                 'goto',
+                'phpdoc',
                 'return',
                 'switch',
                 'throw',
