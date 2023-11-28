@@ -33,7 +33,8 @@ At the moment, **ShrinkWrap** uses the following minifiers (but there are plans 
 - `PHP >= 7.3.0`
 
 ## Installation
-- Download via `composer`: `composer require fpvcode/shrinkwrap`. Due to dependency requirements the package loaded by default requires PHP version `8.1.0`. To download the package compatible with PHP `7.3.0`, create a `composer.json` file with the following content:
+Use `composer`: `composer require fpvcode/shrinkwrap`.  
+Due to dependency requirements the package loaded by default requires PHP version `8.1.0`. To download the package compatible with PHP `7.3.0`, create a `composer.json` file with the following content:
 ```
 {
     "config": {
