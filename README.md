@@ -51,7 +51,7 @@ Due to dependency requirements the package loaded by default requires PHP versio
 ```
 use fpvcode\ShrinkWrap;
 
-$shrinkwrap = new ShrinkWrap($options);
+$shrinkwrap = new ShrinkWrap();
 
 // Global options
 $shrinkwrap->doMinifyHtml(true);        // Allow to minify HTML Code. Default value is `false`.
