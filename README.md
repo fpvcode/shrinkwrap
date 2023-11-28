@@ -33,15 +33,24 @@ At the moment, **ShrinkWrap** uses the following minifiers (but there are plans 
 - `PHP >= 7.3.0`
 
 ## Installation
-- Download via `composer`:
-	`composer require fpvcode/shrinkwrap`
-- Сlone the repo:
-	`git clone https://github.com/fpvcode/shrinkwrap`
+- Download via `composer`: `composer require fpvcode/shrinkwrap`. Due to dependency requirements the package loaded by default requires PHP version `8.1.0`. To download the package compatible with PHP `7.3.0`, create a `composer.json` file with the following content:
+```
+{
+    "config": {
+        "vendor-dir": "vendor",
+        "platform": {
+            "php": "7.3"
+        }
+    }
+}
+
+```
+- Сlone the repo:`git clone https://github.com/fpvcode/shrinkwrap`.
 
 
 ## Usage
 ```
-use fpvcode\ShrinkWrap
+use fpvcode\ShrinkWrap;
 
 $shrinkwrap = new ShrinkWrap($options);
 
@@ -62,30 +71,30 @@ $shrinkwrap->assetDir('assets');        // Directory to store minified files cac
 
 // Voku HtmlMin minify options.
 $voku_options = [
-	'doOptimizeViaHtmlDomParser'                   => true, // optimize html via "HtmlDomParser()"
-	'doRemoveComments'                             => true, // remove default HTML comments (depends on "doOptimizeViaHtmlDomParser(true)")
-	'doSumUpWhitespace'                            => true, // sum-up extra whitespace from the Dom (depends on "doOptimizeViaHtmlDomParser(true)")
-	'doRemoveWhitespaceAroundTags'                 => true, // remove whitespace around tags (depends on "doOptimizeViaHtmlDomParser(true)")
-	'doOptimizeAttributes'                         => true, // optimize html attributes (depends on "doOptimizeViaHtmlDomParser(true)")
-	'doRemoveHttpPrefixFromAttributes'             => true, // remove optional "http:"-prefix from attributes (depends on "doOptimizeAttributes(true)")
-	'doRemoveHttpsPrefixFromAttributes'            => true, // remove optional "https:"-prefix from attributes (depends on "doOptimizeAttributes(true)")
-	'doKeepHttpAndHttpsPrefixOnExternalAttributes' => true, // keep "http:"- and "https:"-prefix for all external links
+	'doOptimizeViaHtmlDomParser'                   => true,  // optimize html via "HtmlDomParser()"
+	'doRemoveComments'                             => true,  // remove default HTML comments (depends on "doOptimizeViaHtmlDomParser(true)")
+	'doSumUpWhitespace'                            => true,  // sum-up extra whitespace from the Dom (depends on "doOptimizeViaHtmlDomParser(true)")
+	'doRemoveWhitespaceAroundTags'                 => true,  // remove whitespace around tags (depends on "doOptimizeViaHtmlDomParser(true)")
+	'doOptimizeAttributes'                         => true,  // optimize html attributes (depends on "doOptimizeViaHtmlDomParser(true)")
+	'doRemoveHttpPrefixFromAttributes'             => true,  // remove optional "http:"-prefix from attributes (depends on "doOptimizeAttributes(true)")
+	'doRemoveHttpsPrefixFromAttributes'            => true,  // remove optional "https:"-prefix from attributes (depends on "doOptimizeAttributes(true)")
+	'doKeepHttpAndHttpsPrefixOnExternalAttributes' => true,  // keep "http:"- and "https:"-prefix for all external links
 	'doMakeSameDomainsLinksRelative'               => [],    // make some links relative, by removing the domain from attributes (['example.com'])
-	'doRemoveDefaultAttributes'                    => true, // remove defaults (depends on "doOptimizeAttributes(true)" | disabled by default)
-	'doRemoveDeprecatedAnchorName'                 => true, // remove deprecated anchor-jump (depends on "doOptimizeAttributes(true)")
-	'doRemoveDeprecatedScriptCharsetAttribute'     => true, // remove deprecated charset-attribute - the browser will use the charset from the HTTP-Header, anyway (depends on "doOptimizeAttributes(true)")
-	'doRemoveDeprecatedTypeFromScriptTag'          => true, // remove deprecated script-mime-types (depends on "doOptimizeAttributes(true)")
-	'doRemoveDeprecatedTypeFromStylesheetLink'     => true, // remove "type=text/css" for css links (depends on "doOptimizeAttributes(true)")
-	'doRemoveDeprecatedTypeFromStyleAndLinkTag'    => true, // remove "type=text/css" from all links and styles
-	'doRemoveDefaultMediaTypeFromStyleAndLinkTag'  => true, // remove "media="all" from all links and styles
+	'doRemoveDefaultAttributes'                    => true,  // remove defaults (depends on "doOptimizeAttributes(true)" | disabled by default)
+	'doRemoveDeprecatedAnchorName'                 => true,  // remove deprecated anchor-jump (depends on "doOptimizeAttributes(true)")
+	'doRemoveDeprecatedScriptCharsetAttribute'     => true,  // remove deprecated charset-attribute - the browser will use the charset from the HTTP-Header, anyway (depends on "doOptimizeAttributes(true)")
+	'doRemoveDeprecatedTypeFromScriptTag'          => true,  // remove deprecated script-mime-types (depends on "doOptimizeAttributes(true)")
+	'doRemoveDeprecatedTypeFromStylesheetLink'     => true,  // remove "type=text/css" for css links (depends on "doOptimizeAttributes(true)")
+	'doRemoveDeprecatedTypeFromStyleAndLinkTag'    => true,  // remove "type=text/css" from all links and styles
+	'doRemoveDefaultMediaTypeFromStyleAndLinkTag'  => true,  // remove "media="all" from all links and styles
 	'doRemoveDefaultTypeFromButton'                => false, // remove type="submit" from button tags
-	'doRemoveEmptyAttributes'                      => true, // remove some empty attributes (depends on "doOptimizeAttributes(true)")
-	'doRemoveValueFromEmptyInput'                  => true, // remove 'value=""' from empty <input> (depends on "doOptimizeAttributes(true)")
-	'doSortCssClassNames'                          => true, // sort css-class-names, for better gzip results (depends on "doOptimizeAttributes(true)")
-	'doSortHtmlAttributes'                         => true, // sort html-attributes, for better gzip results (depends on "doOptimizeAttributes(true)")
-	'doRemoveSpacesBetweenTags'                    => true, // remove more (aggressive) spaces in the dom (disabled by default)
-	'doRemoveOmittedQuotes'                        => true, // remove quotes e.g. class="lall" => class=lall
-	'doRemoveOmittedHtmlTags'                      => true, // remove ommitted html tags e.g. <p>lall</p> => <p>lall
+	'doRemoveEmptyAttributes'                      => true,  // remove some empty attributes (depends on "doOptimizeAttributes(true)")
+	'doRemoveValueFromEmptyInput'                  => true,  // remove 'value=""' from empty <input> (depends on "doOptimizeAttributes(true)")
+	'doSortCssClassNames'                          => true,  // sort css-class-names, for better gzip results (depends on "doOptimizeAttributes(true)")
+	'doSortHtmlAttributes'                         => true,  // sort html-attributes, for better gzip results (depends on "doOptimizeAttributes(true)")
+	'doRemoveSpacesBetweenTags'                    => true,  // remove more (aggressive) spaces in the dom (disabled by default)
+	'doRemoveOmittedQuotes'                        => true,  // remove quotes e.g. class="lall" => class=lall
+	'doRemoveOmittedHtmlTags'                      => true,  // remove ommitted html tags e.g. <p>lall</p> => <p>lall
 ];
 
 $shrinkwrap->htmlEngineConfig('voku', $voku_options); // allows to customize the Voku HtmlMin minifier.
@@ -156,7 +165,7 @@ $html = '
 
 $html = $shrinkwrap->output($html);
 ```
-Output:
+Minified output:
 ```
 <!DOCTYPE html>
 <html dir="ltr" lang="en"><head><meta charset="UTF-8"><meta content="width=device-width, initial-scale=1" name="viewport"><meta content="IE=edge" http-equiv="X-UA-Compatible"><title>HTML page</title><script src="//code.jquery.com/jquery-3.7.1.js"></script><link href="//cdn.usebootstrap.com/bootstrap/3.3.7/css/bootstrap.css" media="screen" rel="stylesheet"><script src="assets/4eb126993fd8e08ddf2c186bd95cd514.min.js"></script><link href="assets/55a39d42c37de2a6ca9617f70dfc2bfa.min.css" rel="stylesheet"><script>function a(){let a=0}</script><style>.class-a{border-radius:4px}</style><body><div> Test HTML </div><script>function b(){let b=0};function c(){let c=0}</script><style>.class-b{border-radius:4px}.class-c{border-radius:4px}</style></body></head></html>
