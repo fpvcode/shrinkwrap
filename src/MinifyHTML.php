@@ -6,14 +6,33 @@ namespace fpvcode\ShrinkWrap;
 
 use voku\helper\HtmlMin;
 
+/**
+ * [Description MinifyHTML].
+ */
 class MinifyHTML extends ShrinkWrap {
+    /**
+     * @var array
+     */
     private $available_engines = ['voku', 'regex'];
 
+    /**
+     * @var string
+     */
     private $engine;
+
+    /**
+     * @var array
+     */
     private $options;
 
+    /**
+     * @var mixed
+     */
     private $minifier;
 
+    /**
+     * @var array
+     */
     private $voku_options = [
         'doOptimizeViaHtmlDomParser'                   => false, // optimize html via "HtmlDomParser()"
         'doRemoveComments'                             => false, // remove default HTML comments (depends on "doOptimizeViaHtmlDomParser(true)")
@@ -41,11 +60,20 @@ class MinifyHTML extends ShrinkWrap {
         'doRemoveOmittedHtmlTags'                      => false, // remove ommitted html tags e.g. <p>lall</p> => <p>lall
     ];
 
+    /**
+     * @param string $engine
+     * @param array  $options
+     */
     public function __construct(string $engine = 'voku', array $options = []) {
         in_array($engine, $this->available_engines) ? $this->engine = $engine : $this->engine = 'voku';
         $this->options = $options;
     }
 
+    /**
+     * @param null|string $data
+     *
+     * @return null|mixed
+     */
     public function init(string $data = null) {
         switch ($this->engine) {
             case 'voku':
@@ -62,6 +90,11 @@ class MinifyHTML extends ShrinkWrap {
         }
     }
 
+    /**
+     * @param null|string $data
+     *
+     * @return null|mixed
+     */
     public function minify(string $data = null) {
         switch ($this->engine) {
             case 'voku':

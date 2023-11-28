@@ -98,6 +98,10 @@ class ShrinkWrap {
         $this->domparser = new HTML5();
     }
 
+    /**
+     * @param mixed $method
+     * @param mixed $args
+     */
     public function __call($method, $args) {
         echo "Calling unknown object method '{$method}' " . json_encode($args) . "\n";
     }

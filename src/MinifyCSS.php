@@ -6,19 +6,44 @@ namespace fpvcode\ShrinkWrap;
 
 use MatthiasMullie\Minify;
 
+/**
+ * [Description MinifyCSS].
+ */
 class MinifyCSS extends ShrinkWrap {
+    /**
+     * @var array
+     */
     private $available_engines = ['matthiasmullie', 'regex'];
 
+    /**
+     * @var string
+     */
     private $engine;
+
+    /**
+     * @var array
+     */
     private $options;
 
+    /**
+     * @var mixed
+     */
     private $minifier;
 
+    /**
+     * @param string $engine
+     * @param array  $options
+     */
     public function __construct(string $engine = 'matthiasmullie', array $options = []) {
         in_array($engine, $this->available_engines) ? $this->engine = $engine : $this->engine = 'matthiasmullie';
         $this->options = $options;
     }
 
+    /**
+     * @param null|string $data
+     *
+     * @return null|mixed
+     */
     public function init(string $data = null) {
         switch ($this->engine) {
             case 'matthiasmullie':
@@ -28,6 +53,11 @@ class MinifyCSS extends ShrinkWrap {
         }
     }
 
+    /**
+     * @param null|string $data
+     *
+     * @return null|mixed
+     */
     public function minify(string $data = null) {
         switch ($this->engine) {
             case 'matthiasmullie':
@@ -35,6 +65,11 @@ class MinifyCSS extends ShrinkWrap {
         }
     }
 
+    /**
+     * @param string $data
+     *
+     * @return null|mixed
+     */
     public function add(string $data) {
         switch ($this->engine) {
             case 'matthiasmullie':
