@@ -21,13 +21,16 @@
  - HTML, inline JS-scripts and CSS-styles are minified.
  - JS and CSS files referenced by the page (except external ones) are minified (can also be combined) and cached, and the corresponding links are changed to point to the cache.
 
-At the moment, **ShrinkWrap** uses the following minifiers (but there are plans to add more):
-- HTML:
-    - [HtmlMin](https://github.com/voku/HtmlMin).
-- JS:
-    - [Minify](https://github.com/matthiasmullie/minify).
-- CSS:
-    - [Minify](https://github.com/matthiasmullie/minify).
+At the moment, **ShrinkWrap** uses the following tools:
+- HTML DOM parser:
+    - [Masterminds/HTML5-PHP](https://github.com/Masterminds/html5-php).
+- Minifiers:
+    - HTML:
+	    - [HtmlMin](https://github.com/voku/HtmlMin).
+    - JS:
+	    - [Minify](https://github.com/matthiasmullie/minify).
+    - CSS:
+	    - [Minify](https://github.com/matthiasmullie/minify).
 
 ## Requirments
 - `PHP >= 7.3.0`
