@@ -26,11 +26,11 @@ At the moment, **ShrinkWrap** uses the following tools:
     - [Masterminds/HTML5-PHP](https://github.com/Masterminds/html5-php).
 - Minifiers:
     - HTML:
-	    - [HtmlMin](https://github.com/voku/HtmlMin).
+	    - [voku/HtmlMin](https://github.com/voku/HtmlMin).
     - JS:
-	    - [Minify](https://github.com/matthiasmullie/minify).
+	    - [matthiasmullie/minify](https://github.com/matthiasmullie/minify).
     - CSS:
-	    - [Minify](https://github.com/matthiasmullie/minify).
+	    - [matthiasmullie/minify](https://github.com/matthiasmullie/minify).
 
 ## Requirments
 - `PHP >= 7.3.0`
