@@ -17,9 +17,9 @@
 # ShrinkWrap
 
 ## Description
-**ShrinkWrap** it's just a wrapper for PHP minifiers of HTML/JS/CSS code. The main purpose of creating this wheel is the desire to have a more or less flexible tool for minifying ready-made HTML pages created by 3rd-party applications. Simply put - we submit an HTML page at the input, and at the output we have a page in which are (optional):
+**ShrinkWrap** it's a wrapper for PHP minifiers of HTML/JS/CSS code. The main purpose of creating this wheel is the desire to have a more or less flexible tool for minifying ready-made HTML pages created by 3rd-party applications. Simply put - we submit an HTML page at the input, and at the output we have a page in which (optional):
  - HTML, inline JS-scripts and CSS-styles are minified.
- - Referenced JS- and CSS-files (except external) are minified (also can be combined) and cached, and the links are appropriately replaced.
+ - JS and CSS files referenced by the page (except external ones) are minified (can also be combined) and cached, and the corresponding links are changed to point to the cache.
 
 At the moment, **ShrinkWrap** uses the following minifiers (but there are plans to add more):
 - HTML:
