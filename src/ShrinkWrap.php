@@ -468,7 +468,7 @@ class ShrinkWrap {
         $this->html = $this->domparser->saveHTML($htmldom);
 
         if ($this->doLog) {
-            $this->timelog['*.' . $type] = [round((microtime(true) - $start), 4) . 'μs', $osize, $msize];
+            $this->timelog['*.' . $type] = [round((microtime(true) - $start), 4) . 'μs', $osize ?? '', $msize ?? ''];
         }
     }
 
