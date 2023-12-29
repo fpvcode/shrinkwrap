@@ -417,8 +417,6 @@ class ShrinkWrap {
                         $minifier = $this->{$type . 'Minifier'}->init();
                         $minifier->add($fname);
                         $minifier->minify($mfile);
-
-                        $this->clearPrev($fname);
                     }
 
                     if ($this->doLog) {
@@ -444,8 +442,6 @@ class ShrinkWrap {
                     }
 
                     $minifier->minify($mfile);
-
-                    $this->clearPrev($mfile);
                 }
 
                 if ($this->doLog) {
@@ -473,46 +469,23 @@ class ShrinkWrap {
     }
 
     /**
-     * Returns the full path and name of the minified file.
+     * Returns path to minified file  by source file name.
      *
-     * @param string $fname The name of a file that will be minified
+     * @param string $file Name or full path of a file to be minified
      *
-     * @return string The name of the minified file
+     * @return string Minified file path
      */
-    private function getMfile(string $fname): string {
-        $finfo = pathinfo($fname);
+    private function getMfile(string $file): string {
+        $finfo = pathinfo($file);
 
         if (preg_match('/[0-9a-f]{32}/i', explode('.', $finfo['filename'])[0])) {
             $finfo['filename'] = explode('.', $finfo['filename'])[0];
             $tmpl = '.min.' . $finfo['extension'];
         } else {
-            $tmpl = '_' . filemtime($fname) . '.min.' . $finfo['extension'];
+            $tmpl = '_' . filemtime($file) . '.min.' . $finfo['extension'];
         }
 
         return $this->assetDir . $finfo['filename'] . $tmpl;
-    }
-
-    /**
-     * Clear out of date minified files.
-     *
-     * @param string (optional) $fname File name to delete from cache
-     */
-    private function clearPrev(string $fname = ''): void {
-        if ($fname) {
-            $finfo = pathinfo($fname);
-
-            if (preg_match('/[0-9a-f]{32}/i', $finfo['filename'])) {
-                $files = glob($this->assetDir . '*.' . $finfo['extension']);
-            } else {
-                $files = glob($this->assetDir . $finfo['filename'] . '*.' . $finfo['extension']);
-            }
-
-            foreach ($files as $file) {
-                if (is_file($file) && $file != $this->getMfile($fname)) {
-                    @unlink($file);
-                }
-            }
-        }
     }
 
     /**
