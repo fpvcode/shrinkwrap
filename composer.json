@@ -1,7 +1,7 @@
 {
     "name": "fpvcode/shrinkwrap",
     "type": "project",
-    "description": "Just another wrapper for HTML/JS/CSS minifiers.",
+    "description": "All-in-one HTML/JS/CSS code minifier.",
     "keywords": [
         "HTML minify",
         "JS minify",
