@@ -40,9 +40,9 @@ class MinifyJS extends ShrinkWrap {
     }
 
     /**
-     * @param null|string $data
+     * @param string|null $data
      *
-     * @return null|mixed
+     * @return mixed|null
      */
     public function init(string $data = null) {
         switch ($this->engine) {
@@ -54,9 +54,9 @@ class MinifyJS extends ShrinkWrap {
     }
 
     /**
-     * @param null|string $data
+     * @param string|null $data
      *
-     * @return null|mixed
+     * @return mixed|null
      */
     public function minify(string $data = null) {
         switch ($this->engine) {
@@ -68,7 +68,7 @@ class MinifyJS extends ShrinkWrap {
     /**
      * @param string $data
      *
-     * @return null|mixed
+     * @return mixed|null
      */
     public function add(string $data) {
         switch ($this->engine) {

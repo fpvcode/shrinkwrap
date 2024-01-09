@@ -102,7 +102,7 @@ class ShrinkWrap {
      * @param mixed $method
      * @param mixed $args
      */
-    public function __call($method, $args) {
+    public function __call($method, $args): void {
         echo "Calling unknown object method '{$method}' " . json_encode($args) . "\n";
     }
 
