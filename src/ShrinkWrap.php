@@ -395,7 +395,9 @@ class ShrinkWrap {
 
                 $fname = $e->getAttribute($attr);
 
-                if (filter_var($fname, FILTER_VALIDATE_URL)) continue;    // skip url sources
+                if (filter_var($fname, FILTER_VALIDATE_URL)) continue;
+                $parsed_url = parse_url($fname);
+                if (isset($parsed_url['scheme']) || isset($parsed_url['host'])) continue;
                 if (!is_file($fname)) continue;
 
                 if ($this->doLog) {
